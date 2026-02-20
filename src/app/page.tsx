@@ -1,66 +1,92 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
+import styles from './page.module.css';
 
 export default function Home() {
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleInstantAudit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (firstName && email) {
+      console.log('Initiating Instant Audit for:', { firstName, email });
+      // Redirect to kickoff the HubSpot OAuth Flow
+      window.location.href = '/api/auth/hubspot';
+    }
+  };
+
+  const handleManualAudit = () => {
+    // Later: redirect to manual audit questionnaire
+    console.log('Navigating to Manual Audit');
+    alert('Manual Audit placeholder');
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
+    <main className={styles.pageWrapper}>
+      <div className={styles.container}>
+
+        {/* Hero Section */}
+        <section className={styles.hero}>
+          <div className={styles.logoContainer}>
+            <Image src="/muloo-logo.png" alt="Muloo Logo" width={180} height={50} style={{ objectFit: 'contain' }} priority />
+          </div>
+          <h1>
+            Is your HubSpot Portal <span className="text-gradient">truly healthy?</span>
+          </h1>
           <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+            Uncover duplicate records, unused seats, and broken automations in seconds.
+            Get an instant 10-point technical audit and reclaim your CRM efficiency.
           </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </section>
+
+        {/* Gated Form Card */}
+        <section className={styles.formCard}>
+          <h2>Start Your Free Audit</h2>
+          <p>Enter your details to get your personalized WebGrader score.</p>
+
+          <form onSubmit={handleInstantAudit}>
+            <div className={styles.formGroup}>
+              <input
+                type="text"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <input
+                type="email"
+                placeholder="Work Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className={styles.formActions}>
+              <button type="submit" className="btn-primary">
+                Instant Automated Audit ✨
+              </button>
+              <button type="button" className={styles.manualAuditBtn} onClick={handleManualAudit}>
+                Or take the 10-Minute Manual Audit &rarr;
+              </button>
+            </div>
+          </form>
+
+          {/* Trust Elements */}
+          <div className={styles.trustBadges}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span>Read-only access. Zero data stored.</span>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
   );
 }
