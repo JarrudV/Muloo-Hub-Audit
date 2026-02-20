@@ -30,7 +30,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.logoContainer}>
-            <Logo serviceName="Hub" />
+            <Logo serviceName="Hub" serviceColor="#00D1FF" />
           </div>
           <h1>
             Is your HubSpot Portal <span className="text-gradient">truly healthy?</span>
