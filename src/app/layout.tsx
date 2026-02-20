@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
+import Logo from '../components/Logo';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
@@ -28,7 +29,7 @@ export default function RootLayout({
             <p>
               Built and powered by{' '}
               <a href="https://www.wearemuloo.com" target="_blank" rel="noopener noreferrer" className="brand-link">
-                <strong>muloo</strong><span className="brand-dot">.</span>
+                <Logo />
               </a>
             </p>
           </footer>

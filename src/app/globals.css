@@ -181,3 +181,17 @@ input::placeholder {
   color: #00D1FF;
   font-weight: 800;
 }
+
+/* Muloo Logo Component Styles */
+.muloo-logo {
+  font-family: var(--font-outfit);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.muloo-logo .service-name {
+  color: var(--accent-primary);
+}

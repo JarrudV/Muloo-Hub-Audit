@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+import Logo from '../components/Logo';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.logoContainer}>
-            <Image src="/muloo-logo.png" alt="Muloo Logo" width={180} height={50} style={{ objectFit: 'contain' }} priority />
+            <Logo serviceName="Hub" />
           </div>
           <h1>
             Is your HubSpot Portal <span className="text-gradient">truly healthy?</span>

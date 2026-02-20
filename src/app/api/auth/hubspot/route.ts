@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-    // TODO: Read Client ID and Redirect URI from environment variables
+    // Dynamically calculate the Redirect URI based on the request host (no .env variable needed)
     const clientId = process.env.NEXT_PUBLIC_HUBSPOT_CLIENT_ID;
-    const redirectUri = process.env.NEXT_PUBLIC_HUBSPOT_REDIRECT_URI;
+    const host = request.headers.get('host');
+    const protocol = host?.includes('localhost') ? 'http' : 'https';
+    const redirectUri = `${protocol}://${host}/api/auth/hubspot/callback`;
 
     // Define required scopes for Health Check (must match HubSpot exactly)
     const scopes = [

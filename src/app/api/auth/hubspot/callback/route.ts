@@ -11,7 +11,11 @@ export async function GET(request: Request) {
 
     const clientId = process.env.NEXT_PUBLIC_HUBSPOT_CLIENT_ID;
     const clientSecret = process.env.HUBSPOT_CLIENT_SECRET;
-    const redirectUri = process.env.NEXT_PUBLIC_HUBSPOT_REDIRECT_URI;
+
+    // Dynamically calculate the Redirect URI
+    const host = request.headers.get('host');
+    const protocol = host?.includes('localhost') ? 'http' : 'https';
+    const redirectUri = `${protocol}://${host}/api/auth/hubspot/callback`;
 
     if (!clientId || !clientSecret || !redirectUri) {
         return NextResponse.json({ error: 'HubSpot configuration missing on the server' }, { status: 500 });
