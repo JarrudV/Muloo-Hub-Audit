@@ -1,5 +1,5 @@
 :root {
-  --bg-color: #050A30;
+  --bg-color: #0A0A0A;
   --text-primary: #FFFFFF;
   --text-secondary: #A1A1AA;
   --accent-primary: #FF7A59;
@@ -9,8 +9,7 @@
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   --font-inter: 'Inter', sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-aileron: 'Aileron', 'Montserrat', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
 }
 
 * {
@@ -42,9 +41,9 @@ body {
 
 .blob {
   position: absolute;
-  filter: blur(150px);
+  filter: blur(100px);
   border-radius: 50%;
-  opacity: 0.2;
+  opacity: 0.5;
   animation: float 20s infinite alternate ease-in-out;
 }
 
@@ -82,18 +81,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-montserrat);
-  font-weight: 600;
+  font-family: var(--font-outfit);
+  font-weight: 700;
   letter-spacing: -0.02em;
-}
-
-h1 {
-  font-weight: 800;
 }
 
 /* Gradient Text */
 .text-gradient {
-  background: linear-gradient(135deg, #00C4CC 0%, #C140FF 50%, #F47621 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -133,7 +128,7 @@ input::placeholder {
   color: #fff;
   border: none;
   border-radius: 12px;
-  font-family: var(--font-montserrat);
+  font-family: var(--font-outfit);
   font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
@@ -172,8 +167,7 @@ input::placeholder {
 .brand-link {
   color: #FFFFFF;
   text-decoration: none;
-  font-family: var(--font-montserrat);
-  font-weight: 600;
+  font-family: var(--font-outfit);
   font-size: 1.1rem;
   letter-spacing: -0.02em;
   transition: opacity 0.2s ease;
@@ -190,9 +184,8 @@ input::placeholder {
 
 /* Muloo Logo Component Styles */
 .muloo-logo {
-  font-family: var(--font-aileron);
-  font-weight: 900;
-  /* Aileron Heavy */
+  font-family: var(--font-outfit);
+  font-weight: 800;
   letter-spacing: -0.02em;
   display: inline-flex;
   align-items: center;

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter, Montserrat } from 'next/font/google';
+import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import Logo from '../components/Logo';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
 
 export const metadata: Metadata = {
   title: 'Muloo Hub | HubSpot Health Check',
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <body>
         <div className="blobs">
           <div className="blob blob-1"></div>
