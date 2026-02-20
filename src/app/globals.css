@@ -184,7 +184,7 @@ input::placeholder {
 
 /* Muloo Logo Component Styles */
 .muloo-logo {
-  font-family: var(--font-outfit);
+  font-family: var(--font-aileron);
   font-weight: 700;
   letter-spacing: -0.02em;
   display: inline-flex;
