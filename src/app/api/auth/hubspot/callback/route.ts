@@ -54,7 +54,8 @@ export async function GET(request: Request) {
         // Redirect back to successful report page, passing the audit results safely via URL params
         // Note: For a production app, we would save this to a DB and pass an ID instead to prevent URL limits.
         const encodedScores = encodeURIComponent(JSON.stringify(scores));
-        return NextResponse.redirect(new URL(`/report?status=success&data=${encodedScores}`, request.url));
+        const baseUrl = `${protocol}://${host}`;
+        return NextResponse.redirect(new URL(`/report?status=success&data=${encodedScores}`, baseUrl));
     } catch (error) {
         console.error('OAuth Exchange Exception:', error);
         return NextResponse.json({ error: 'Internal Server Error during OAuth exchange' }, { status: 500 });
